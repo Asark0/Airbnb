@@ -1,4 +1,4 @@
--- HOW TO REMOVE NULL ROWS USING INPLACE--
+-- HOW TO REMOVE NULL ROWS USING dropna() & ALTER CURRENT DATA USING inplace=True  --
 import pandas as pd
 import os
 
