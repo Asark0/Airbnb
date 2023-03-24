@@ -11,7 +11,8 @@ droplist = [
     "longitude",
     "room_type",
 	"calculated_host_listings_count",
-    "reviews_per_month
+    "reviews_per_month"
+ ]
     
     
     
