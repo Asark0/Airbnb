@@ -1,4 +1,4 @@
--- HOW TO REMOVE NULL ROWS USING dropna() & ALTER CURRENT DATA USING inplace=True  --
+# HOW TO REMOVE NULL ROWS USING dropna() & ALTER CURRENT DATA USING inplace=True  
 import pandas as pd
 import os
 
@@ -13,15 +13,16 @@ droplist = [
 	"calculated_host_listings_count",
     "reviews_per_month"
 ]
-df2 = df.drop(droplist, axis= 'columns')
-
+df2 = df.drop(droplist, axis= 'columns') 
+#Use axis to determine to use rows or columns
 print(df2.head(1).to_string())
 
 df2.dropna(inplace=True)
 
 df2.info()
 
---The non-null rows are the same amount as entries so this means all the null rows were removed--
+#The non-null rows are the same amount as entries so this means all the null rows were removed
+
 
      id                                name  host_id neighbourhood_group  price  minimum_nights  number_of_reviews last_review  availability_365
 0  2539  Clean & quiet apt home by the park     2787            Brooklyn    149               1                  9  2018-10-19               365
