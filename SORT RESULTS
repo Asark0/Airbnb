@@ -1,0 +1,45 @@
+# Sort results from previous query to create suggestions to Airbnb
+
+import pandas as pd
+import os
+
+df4 = pd.read_csv(os.path.join(os.getenv('WORKSPACE'),'nyc_airbnb_df3.csv'), sep="\t")
+
+df4.sort_values(by=["neighbourhood_group", "last_review"], inplace=True)
+
+df4.info()
+
+print()
+
+print(df4.head(10).to_string())
+
+
+
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 554 entries, 11894 to 10834
+Data columns (total 9 columns):
+ #   Column               Non-Null Count  Dtype 
+---  ------               --------------  ----- 
+ 0   id                   554 non-null    int64 
+ 1   name                 554 non-null    object
+ 2   host_id              554 non-null    int64 
+ 3   neighbourhood_group  554 non-null    object
+ 4   price                554 non-null    int64 
+ 5   minimum_nights       554 non-null    int64 
+ 6   number_of_reviews    554 non-null    int64 
+ 7   last_review          554 non-null    object
+ 8   availability_365     554 non-null    int64 
+dtypes: int64(6), object(3)
+memory usage: 43.3+ KB
+
+             id                                                name    host_id neighbourhood_group  price  minimum_nights  number_of_reviews last_review  availability_365
+11894   9260415                 Comfy Room Near Bronx Zoo and NYBG!   48106825               Bronx     47               2                138  2019-05-20               353
+11303   8772654                 Friendly-colorful-cozy W/ breakfast   45990565               Bronx     33               2                103  2019-05-31               282
+1578     715270  2 Beds/Queen & Full Beautiful Room 40 minsT.Square    3684360               Bronx     39               2                169  2019-06-12               306
+22881  18540170   Great room across the street from the High bridge  128692351               Bronx    100               2                107  2019-06-14               344
+18243  14301951                  A beautiful cozy room with balcony   87370616               Bronx     75               2                110  2019-06-17               350
+16869  13436258                 One Bedroom Apartment  in TownHouse    5944946               Bronx     99               1                103  2019-06-18               264
+645      245544                   NY/ Big Room for 2 near Manhattan    1260921               Bronx     42               2                108  2019-06-19               302
+1965     858695                 Very Large Private Room on quiet st    4494343               Bronx     30               2                291  2019-06-20               208
+14310  11138823                    A beautiful Cozy 1 BR Apartment.   57885474               Bronx     90               2                199  2019-06-21               319
+433      149777  Artsy 1 bedroom Apt. 20 min to 42nd Grand Central!     716306               Bronx     77               1                197  2019-06-23               309
