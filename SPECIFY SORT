@@ -1,0 +1,50 @@
+# Company informed that they wanted data sorted by neighborhood group rather than price
+
+
+import pandas as pd
+import os
+
+promotion = pd.read_csv(os.path.join(os.getenv('WORKSPACE'),'nyc_airbnb_sorted.csv'), sep="\t")
+
+promotion.sort_values(by=["neighbourhood_group", "price"], inplace=True)
+
+print()
+
+print(promotion.head(20).to_string())
+
+groups = promotion["neighbourhood_group"].value_counts()
+print(groups, file=open(os.path.join(os.getenv('WORKSPACE'),'neighbourhood_counts.txt'), 'a'))
+
+print()
+
+print(groups)
+
+
+             id                                                name    host_id neighbourhood_group  price  minimum_nights  number_of_reviews last_review  availability_365
+1965     858695                 Very Large Private Room on quiet st    4494343               Bronx     30               2                291  2019-06-20               208
+11303   8772654                 Friendly-colorful-cozy W/ breakfast   45990565               Bronx     33               2                103  2019-05-31               282
+1706     773041                    Nice beautiful room In the Bronx    3684360               Bronx     38               1                187  2019-06-23               241
+1578     715270  2 Beds/Queen & Full Beautiful Room 40 minsT.Square    3684360               Bronx     39               2                169  2019-06-12               306
+15793  12774885            Spacious, cozy bedroom in a private home   69507287               Bronx     40               1                151  2019-07-01               338
+171       44096                                    Room with a View     190409               Bronx     40               1                219  2019-07-04               353
+645      245544                   NY/ Big Room for 2 near Manhattan    1260921               Bronx     42               2                108  2019-06-19               302
+207       54626                      Cozy bedroom by Yankee Stadium     190409               Bronx     45               1                138  2019-06-30               323
+11894   9260415                 Comfy Room Near Bronx Zoo and NYBG!   48106825               Bronx     47               2                138  2019-05-20               353
+1666     755528                  PRIVATE BATH/TONS OF SUNLIGHT/SAFE    3684360               Bronx     49               2                189  2019-06-23               238
+4795    3400359                                    Awesome Deal NYC   16286162               Bronx     49               2                114  2019-06-29               240
+5541    4031463            Comfortable Private space with a terrace   20900568               Bronx     50               1                108  2019-06-28               261
+3349    2008227                      Private Studio in Private Home    9539641               Bronx     53               2                143  2019-06-30               263
+23218  18795447           Large Private Room in Heart of Diversity.   89071431               Bronx     55               2                112  2019-06-30               271
+26026  20772204  NO XTRA FEES, 30 min To Grand Central:Pvt Entrance   82889379               Bronx     55               1                156  2019-06-30               318
+15407  12345615                     Natural light comfortable room!   52196858               Bronx     59               1                120  2019-07-02               336
+29178  22400368           Forest Houses City Getaway (No Hot Water)  158568617               Bronx     60               1                104  2019-06-23               365
+2498    1278784                  Private room minutes from midtown!    6959061               Bronx     60               2                147  2019-06-24               213
+18243  14301951                  A beautiful cozy room with balcony   87370616               Bronx     75               2                110  2019-06-17               350
+433      149777  Artsy 1 bedroom Apt. 20 min to 42nd Grand Central!     716306               Bronx     77               1                197  2019-06-23               309
+
+Brooklyn         231
+Manhattan        143
+Queens           133
+Bronx             29
+Staten Island     18
+Name: neighbourhood_group, dtype: int64
